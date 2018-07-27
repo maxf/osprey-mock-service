@@ -1,6 +1,7 @@
 var Negotiator = require('negotiator')
 var resources = require('osprey-resources')
 var osprey = require('osprey')
+var seedrandom = require('seedrandom')
 
 /**
  * Export the mock server.
@@ -116,6 +117,9 @@ function handler (method) {
   return function (req, res) {
     var negotiator = new Negotiator(req)
     var type = negotiator.mediaType(types)
+    seedrandom(req.params.personId, { global: true })
+    console.log('BONG', req.params.personId)
+
     if (req.params && (req.params.mediaTypeExtension || req.params.ext)) {
       var ext = req.params.mediaTypeExtension || req.params.ext
       ext = ext.slice(1)
