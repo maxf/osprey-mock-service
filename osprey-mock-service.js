@@ -118,7 +118,6 @@ function handler (method) {
     var negotiator = new Negotiator(req)
     var type = negotiator.mediaType(types)
     seedrandom(req.params.personId, { global: true })
-    console.log('BONG', req.params.personId)
 
     if (req.params && (req.params.mediaTypeExtension || req.params.ext)) {
       var ext = req.params.mediaTypeExtension || req.params.ext
